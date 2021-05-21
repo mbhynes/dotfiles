@@ -20,10 +20,12 @@ if ! zgen saved; then
   zgen save
 fi
 
+# vi keybindings in the shell
 bindkey -v
+bindkey 'jk' vi-cmd-mode
+
 PS1="%F{red}%n%F{white}@%F{yellow}%m:%F{green}%1~%f$ "
 
-CLICOLOR=1
-
 # Use https://geoff.greer.fm/lscolors/ to reconfigure this
+CLICOLOR=1
 LSCOLORS='ahfxcxdxbxegedabagacad'
