@@ -2,13 +2,14 @@
 #
 # Install typical brew packages.
 
-BREW_SOURCE_SCRIPT='https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh'
 SCRIPT_NAME=$0
 
+BREW_SOURCE_SCRIPT='https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh'
+
 BREW_PACKAGES=(
+  'gpg'
   'mitmproxy'
   'lulu'
-  'xcode'
   'highlight'
   'xclip'
   'ranger'
@@ -24,7 +25,9 @@ log() {
 }
 
 init() {
-  if ! which brew -q; then
+  if which brew > /dev/null; then
+    log "brew already installed; skipping"
+  else
     log "brew could not be found; installing from source"
     /bin/bash -c "$(curl -fsSL $BREW_SOURCE_SCRIPT)"
   fi
