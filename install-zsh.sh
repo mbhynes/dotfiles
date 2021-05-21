@@ -11,7 +11,7 @@ log() {
 }
 
 init() {
-  if [ ! -d $HOME/.zgen ]; then
+  if [ ! -d "$ZGEN_ROOT" ]; then
     git clone https://github.com/tarjoilija/zgen.git "$ZGEN_ROOT"
   else
     cd "$ZGEN_ROOT"
