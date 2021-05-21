@@ -19,6 +19,16 @@ BREW_PACKAGES=(
   'openjdk'
   'scala@2.12'
   'ipython'
+  'fzf'
+  'z'
+  'ctags'
+  '1password-cli'
+  'cmake'
+  'python'
+  'vim'
+  'mono'
+  'go'
+  'nodejs'
 )
 
 log() {

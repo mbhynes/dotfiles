@@ -20,6 +20,7 @@ DOTFILES=(
   'inputrc'
   'tmux.conf'
   'zshrc'
+  'fzf.zsh'
 )
 
 for dotfile in "${DOTFILES[@]}"; do

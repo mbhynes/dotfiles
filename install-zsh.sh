@@ -20,4 +20,9 @@ init() {
   fi
 }
 
+fzf_keybindings() {
+  brew install fzf
+  /usr/local/opt/fzf/install
+}
+
 init
