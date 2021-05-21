@@ -1,25 +1,28 @@
 export FZF_BASE='/usr/local/bin/fzf'
 
-# vim path override; if a brew version has been installed, prefer this
-export VIM_PATH=$(
-  find /usr/local/Cellar/vim -name vim -type f \
+get_brew_path() { bin_name="$1";
+  find /usr/local/Cellar/$bin_name* -name $bin_name -type f -o -type l \
   | sort -h \
   | tail -n 1 \
-  | xargs dirname \
-)
+  | xargs dirname
+}
+
+# vim path override; if a brew version has been installed, prefer this
+export VIM_PATH=$(get_brew_path vim)
 if [ -n "$VIM_PATH" ]; then
   export PATH=$VIM_PATH:$PATH
 fi
 
 # python path override
-export PYTHON_PATH=$(
-  find /usr/local/Cellar/ -name python3 \
-  | sort -h \
-  | tail -n 1 \
-  | xargs dirname \
-)
+export PYTHON_PATH=$(get_brew_path python@3)
 if [ -n "$PYTHON_PATH" ]; then
   export PATH=$PYTHON_PATH:$PATH
+fi
+
+# scala path override
+export SCALA_PATH=$(get_brew_path scala)
+if [ -n "$SCALA_PATH" ]; then
+  export PATH=$PATH:$SCALA_PATH
 fi
 
 # load zgen
