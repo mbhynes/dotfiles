@@ -11,11 +11,12 @@ BREW_PACKAGES=(
   'mitmproxy'
   'lulu'
   'highlight'
+  'tmux'
   'xclip'
   'ranger'
   'dos2unix'
   'wget'
-  'eclipse-java'
+  'openjdk'
   'scala@2.12'
   'ipython'
 )
