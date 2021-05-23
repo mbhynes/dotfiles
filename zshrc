@@ -26,7 +26,7 @@ if [ -n "$SCALA_PATH" ]; then
 fi
 
 # google cloud sdk
-export GCLOUD_PATH="$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/"
+export GCLOUD_PATH="$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
 if [ -d "$GCLOUD_PATH" ]; then
  source "$GCLOUD_PATH/path.zsh.inc"
  source "$GCLOUD_PATH/completion.zsh.inc"
@@ -69,36 +69,7 @@ export LSCOLORS='ahfxcxdxbxegedabagacad'
 # source fzf history search keybindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# CTRL-P - pipe the gcloud CLI options into fzf for faster searching
-{
-
-__gcloud_sel() {
-  local selected num
-  setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
-  gcloud_docs_root='/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/lib/surface'
-  local cmd="find $gcloud_docs_root -name '*.py' \
-    | sed -e 's:__init__.py::; s:.py::; s:$gcloud_docs_root::; s:^:gcloud:; s:_:-:g' \
-    | tr '/' ' ' \
-    | sort \
-    | uniq "
-  eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $FZF_DEFAULT_OPTS -n2..,.. --tiebreak=index --bind=ctrl-r:toggle-sort,ctrl-z:ignore $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m" $(__fzfcmd) | while read item; do
-    echo -n "${item} "
-  done
-  local ret=$?
-  echo
-  return $ret
-}
-
-fzf-gcloud-widget() {
-  LBUFFER="${LBUFFER}$(__gcloud_sel)"
-  local ret=$?
-  zle reset-prompt
-  return $ret
-}
-zle     -N   fzf-gcloud-widget
-bindkey '^P' fzf-gcloud-widget
-
-} always {
-  eval $__fzf_key_bindings_options
-  'unset' '__fzf_key_bindings_options'
-}
+# ==========================================================================
+# Google Cloud SDK fzf helper functions
+# ==========================================================================
+[ -f ~/.gcloud-fzf.zsh ] && source ~/.gcloud-fzf.zsh
