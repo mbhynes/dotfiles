@@ -42,6 +42,7 @@ init() {
     log "brew could not be found; installing from source"
     /bin/bash -c "$(curl -fsSL $BREW_SOURCE_SCRIPT)"
   fi
+  brew analytics off
 }
 
 init
