@@ -39,6 +39,7 @@ if [ -f "$HOME/.antigen/antigen.zsh" ]; then
   antigen bundle git-prompt
 
   antigen bundle Aloxaf/fzf-tab
+  antigen bundle mbhynes/fzf-gcloud --branch=main
 fi
 
 export PS1="%F{red}%n%F{white}@%F{yellow}%m:%F{green}%1~%f$ "
@@ -49,11 +50,6 @@ export LSCOLORS='ahfxcxdxbxegedabagacad'
 
 # Source fzf history search keybindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# ==========================================================================
-# Google Cloud SDK fzf helper functions
-# ==========================================================================
-[ -f ~/.gcloud-fzf.zsh ] && source ~/.gcloud-fzf.zsh
 
 # google cloud sdk
 export GCLOUD_PATH="$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
