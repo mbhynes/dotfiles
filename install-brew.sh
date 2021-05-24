@@ -29,6 +29,8 @@ BREW_PACKAGES=(
   'mono'
   'go'
   'nodejs'
+  'ffmpeg'
+  'gifsicle'
 )
 
 log() {
