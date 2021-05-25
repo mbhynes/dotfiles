@@ -21,7 +21,6 @@ DOTFILES=(
   'tmux.conf'
   'zshrc'
   'fzf.zsh'
-  'gcloud-fzf.zsh'
 )
 
 for dotfile in "${DOTFILES[@]}"; do

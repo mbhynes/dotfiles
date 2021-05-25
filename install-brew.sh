@@ -31,6 +31,7 @@ BREW_PACKAGES=(
   'nodejs'
   'ffmpeg'
   'gifsicle'
+  'jq'
 )
 
 log() {
