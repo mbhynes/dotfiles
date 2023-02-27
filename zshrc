@@ -2,6 +2,9 @@
 bindkey -v
 bindkey 'jk' vi-cmd-mode
 
+# readline vi keybindings
+set -o vi
+
 # Set up zsh completion system
 autoload -U compinit
 compinit
@@ -59,3 +62,13 @@ if [ -d "$GCLOUD_PATH" ]; then
 fi
 
 antigen apply
+
+alias x='open -a "MPlayer OSX Extended.app"'
+# display color escape characters as colours in less (e.g. jq -C [file] | less -R)
+alias less='less -R'
+
+POSTGRESQL_PATH="/usr/local/opt/postgresql/bin"
+if [ -d "$POSTGRESQL_PATH" ]; then
+  export PATH=$PATH:$POSTGRESQL_PATH
+fi
+export PATH=$PATH:$HOME/bin
